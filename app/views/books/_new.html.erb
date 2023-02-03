@@ -1,0 +1,35 @@
+<h2>User info</h2>
+<div>
+  <%= image_tag user.get_profile_image %>
+  <table class="table table-hover table-inverse">
+    <tr>
+      <th>name</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <td><%= user.introduction %></td>
+    </tr>
+  </table>
+  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block edit_user_79455" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
+<br>
+<h2>New book</h2>
+  <%= form_with model: @book, local: true do |f| %>
+    <div>
+      <p>Title</p>
+        <%= f.text_field :title, class:"form-control book_title" %>
+    </div>
+    <br>
+    <div>
+      <p>Opinion</p>
+        <%= f.text_area :body, class:"form-control book_body" %>
+    </div>
+    <br>
+    <div>
+        <%= f.submit 'Create Book', class:"btn btn-success" %>
+    </div>
+  <% end %>
+  <br>

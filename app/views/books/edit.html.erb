@@ -1,0 +1,39 @@
+<p id="notice"><%= flash[:success] %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>Editing Book</h2>
+        <div id="errors">
+          <% if @editing_book.errors.any? %>
+           <% if @editing_book.errors.count == 1 %>
+             <h3><%= @editing_book.errors.count %> error has occured.</h3>
+           <% elsif @editing_book.errors.count > 1 %>
+             <h3><%= @editing_book.errors.count %> errors have occured.</h3>
+           <% end %>
+            <ul>
+              <% @editing_book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <%= form_with model: @editing_book, local: true do |f| %>
+          <br>
+          <h4>Title</h4>
+          <%= f.text_field :title, class:"form-control book_title" %>
+          <br>
+  
+          <h4>Body</h4>
+          <%= f.text_area :body, class:"form-control book_body" %>
+          <br>
+  
+          <%= f.submit 'Update Book', class:"btn btn-success" %>
+  
+        <% end %>
+        <br>
+        <%= link_to "Show", book_path(@editing_book.id) %> |
+        <%= link_to "Back", books_path %>
+    </div>
+  </div>
+</div>

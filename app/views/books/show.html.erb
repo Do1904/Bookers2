@@ -1,0 +1,35 @@
+<p id="notice"><%= flash[:success] %></p>
+
+<div class="container">
+  <div class="row"> 
+    <div class="col-md-3">
+      <%= render 'books/new', user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tr>
+          <td>
+            <%= link_to user_path(@showing_book.user_id) do %>
+              <%= image_tag @showing_book.user.get_profile_image %><br><%= @showing_book.user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @showing_book.title, book_path(@showing_book.id) %></td>
+          <td><%=@showing_book.body %></td>
+          <% if @showing_book.user_id == current_user.id %>
+            <td><%= link_to "Edit", edit_book_path(@showing_book.id), class:"btn btn-sm btn-success edit_book_60403" %></td>
+            <td><%= link_to "Destroy", book_path(@showing_book.id), method: :delete, class:"btn btn-sm btn-danger destroy_book_60403", "data-confirm" => "John Cena: Are you sure about that？" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
